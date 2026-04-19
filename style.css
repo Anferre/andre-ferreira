@@ -44,11 +44,13 @@ html { scroll-behavior: smooth; }
 
 /* Certificações Grid */
 .certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex; /* Mudamos para flex para alinhar lado a lado com mais força */
+    flex-wrap: wrap; /* Se a tela for pequena, ele pula linha; se for grande, fica tudo junto */
+    justify-content: center;
     gap: 20px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 .certification-card {
@@ -58,6 +60,7 @@ html { scroll-behavior: smooth; }
     display: flex;
     align-items: center;
     gap: 15px;
+    width: 280px; /* Definimos um tamanho fixo para todos ficarem iguais */
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: 0.3s;
 }
