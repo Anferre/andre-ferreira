@@ -1,0 +1,328 @@
+/* ==========================================================================
+   CSS Custom Properties (Variáveis)
+   ========================================================================== */
+:root {
+    --primary-color: #0A192F; /* Azul Escuro (fundo principal) */
+    --secondary-color: #F5F5F5; /* Cinza Claro (fundo de seções) */
+    --text-color-primary: #E0E0E0; /* Texto principal em fundos escuros */
+    --text-color-secondary: #333333; /* Texto principal em fundos claros */
+    --accent-color: #64FFDA; /* Cor de destaque (não especificada, mas boa para CTAs) */
+    --white: #FFFFFF;
+    
+    --font-primary: 'Calibri', 'San Francisco', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    --font-secondary: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
+
+    --header-height: 70px;
+}
+
+/* ==========================================================================
+   Reset Básico e Estilos Globais
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%; /* 16px */
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--primary-color);
+    color: var(--text-color-primary);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--white);
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem); /* Título responsivo */
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color-secondary);
+}
+
+.content-section {
+    padding: 5rem 1.5rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color-secondary);
+}
+
+.content-section:nth-of-type(odd) {
+     background-color: var(--white);
+}
+
+
+/* ==========================================================================
+   Cabeçalho e Navegação
+   ========================================================================== */
+.main-header {
+    background-color: rgba(10, 25, 47, 0.85); /* Fundo com transparência */
+    backdrop-filter: blur(10px);
+    padding: 0 1.5rem;
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.nav-menu {
+    display: none; /* Escondido em mobile */
+    list-style: none;
+}
+
+.nav-menu li {
+    margin-left: 1.5rem;
+}
+
+.nav-menu a {
+    font-size: 1rem;
+}
+
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--header-height) 1.5rem 2rem;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: var(--white);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    color: var(--accent-color);
+    margin: 0.5rem 0 1rem 0;
+}
+
+.hero-quote {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    font-style: italic;
+    color: var(--text-color-primary);
+}
+
+.cta-button {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    margin: 0.5rem;
+    display: inline-block;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button.primary {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.cta-button.primary:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+.cta-button.secondary {
+    color: var(--accent-color);
+}
+
+.cta-button.secondary:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   Seções de Conteúdo (Sobre, Experiência, etc.)
+   ========================================================================== */
+
+#about .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+#about .about-content p {
+    margin-bottom: 1rem;
+}
+
+/* Experiência */
+.experience-grid {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.experience-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.experience-card h3 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+.experience-details {
+    color: #555;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.experience-card ul {
+    list-style-position: inside;
+}
+
+/* Habilidades */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skill-tag {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+}
+
+/* Projetos */
+.projects-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.project-card {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+}
+
+.project-tech {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    color: #555;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.project-link {
+    margin-top: auto; /* Alinha o link no final */
+}
+
+/* Contato */
+#contact {
+    text-align: center;
+}
+.contact-text {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+.contact-links {
+    margin-bottom: 2rem;
+}
+.contact-link {
+    display: block;
+    margin: 1rem auto;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+
+/* ==========================================================================
+   Rodapé
+   ========================================================================== */
+.main-footer {
+    background-color: var(--primary-color);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--text-color-primary);
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    margin: 0 0.5rem;
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   Media Queries - Responsividade
+   ========================================================================== */
+
+/* Tablets */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktops */
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .contact-link {
+        display: inline;
+        margin: 0 1.5rem;
+    }
+}
