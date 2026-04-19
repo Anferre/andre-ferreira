@@ -12,8 +12,10 @@
 body { font-family: var(--font-primary); background-color: var(--primary-color); color: var(--text-color-primary); line-height: 1.6; }
 html { scroll-behavior: smooth; }
 
+/* Header */
 .main-header {
-    background-color: rgba(10, 25, 47, 0.9);
+    background-color: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(5px);
     height: 70px;
     position: fixed;
     width: 100%;
@@ -26,19 +28,24 @@ html { scroll-behavior: smooth; }
 
 .nav-logo { color: var(--white); font-weight: bold; text-decoration: none; font-size: 1.2rem; }
 .nav-menu { display: flex; list-style: none; gap: 20px; }
-.nav-menu a { color: var(--white); text-decoration: none; font-size: 0.9rem; }
+.nav-menu a { color: var(--white); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+.nav-menu a:hover { color: var(--accent-color); }
 
+/* Hero */
 .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
-.hero-subtitle { color: var(--accent-color); margin: 10px 0; }
+.hero-title { font-size: clamp(2.5rem, 6vw, 4rem); }
+.hero-subtitle { color: var(--accent-color); margin: 10px 0; font-size: 1.2rem; }
+.hero-quote { max-width: 600px; font-style: italic; opacity: 0.8; }
 
+/* Seções */
 .content-section { padding: 80px 20px; background-color: var(--secondary-color); color: var(--text-color-secondary); }
 .content-section:nth-of-type(odd) { background-color: var(--white); }
-.section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--primary-color); }
+.section-title { text-align: center; margin-bottom: 40px; font-size: 2.2rem; color: var(--primary-color); }
 
-/* Grid de Certificações */
+/* Certificações Grid */
 .certifications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     max-width: 1100px;
     margin: 0 auto;
@@ -47,30 +54,46 @@ html { scroll-behavior: smooth; }
 .certification-card {
     background: #fff;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: 0.3s;
 }
 
 .certification-card:hover { transform: translateY(-5px); }
-.cert-icon { font-size: 2rem; }
-.cert-info h3 { font-size: 1rem; color: var(--primary-color); margin-bottom: 5px; }
-.cert-info p { font-size: 0.85rem; color: #666; }
+.cert-icon { font-size: 2.2rem; }
+.cert-info h3 { font-size: 1rem; color: var(--primary-color); margin-bottom: 4px; }
+.cert-info p { font-size: 0.85rem; color: #666; font-weight: 500; }
 
-/* Cores das Bordas */
+/* Cores das Certificações */
 .aws-border { border-left: 6px solid #ff9900; }
 .oci-border { border-left: 6px solid #f80000; }
 .terra-border { border-left: 6px solid #844ecd; }
 
-/* Habilidades e Cards */
-.skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.skill-tag { background: var(--primary-color); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
+/* Habilidades */
+.skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 800px; margin: 0 auto; }
+.skill-tag { background: var(--primary-color); color: #fff; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
 
-.cta-button { padding: 10px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 10px; display: inline-block; }
+/* Experiência e Projetos */
+.experience-grid, .projects-grid { max-width: 900px; margin: 0 auto; display: grid; gap: 20px; }
+.experience-card, .project-card { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+/* Botões */
+.cta-button { padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 10px; transition: 0.3s; }
 .cta-button.primary { background: var(--accent-color); color: var(--primary-color); }
 .cta-button.secondary { border: 1px solid var(--accent-color); color: var(--accent-color); }
+.cta-button:hover { opacity: 0.8; transform: translateY(-2px); }
 
-.main-footer { padding: 40px; text-align: center; background: var(--primary-color); color: #fff; }
+/* Contato Link */
+.contact-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+.contact-link:hover { color: #ff9900; }
+
+.main-footer { padding: 50px; text-align: center; background: var(--primary-color); color: #fff; font-size: 0.9rem; }
