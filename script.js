@@ -1,59 +1,59 @@
-// Este alerta serve para confirmar se o cache foi limpo
-alert("🚀 JS Carregado com sucesso na branch Dev!");
+/**
+ * @file script.js
+ * @description Lógica para Portfólio: Digitação, Revelação e Scroll.
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Efeito de Digitação ---
+    // 1. EFEITO DE DIGITAÇÃO
     const typingElement = document.getElementById("typing-text");
     if (typingElement) {
-        const text = "Cloud & DevOps Engineer | AWS | Terraform | FinOps";
-        let i = 0;
-        typingElement.innerHTML = ""; 
+        const fullText = "Cloud & DevOps Engineer | AWS | Terraform | FinOps";
+        typingElement.textContent = ""; // Garante que comece vazio
+        let charIndex = 0;
 
-        function typeWriter() {
-            if (i < text.length) {
-                typingElement.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+        function type() {
+            if (charIndex < fullText.length) {
+                typingElement.textContent += fullText.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100);
             }
         }
-        typeWriter();
+        setTimeout(type, 500); // Pequeno delay inicial
     }
 
-    // --- 2. Revelar Seções ao Rolar ---
+    // 2. REVELAR SEÇÕES AO ROLAR
     const sections = document.querySelectorAll('.content-section');
-    const revealSection = () => {
+    const revealOnScroll = () => {
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
-            if (sectionTop < window.innerHeight - 100) {
-                section.style.opacity = "1";
-                section.style.transform = "translateY(0)";
+            const revealPoint = window.innerHeight - 100;
+
+            if (sectionTop < revealPoint) {
+                section.classList.add('appear');
             }
         });
     };
 
-    // Configuração inicial invisível
-    sections.forEach(section => {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(20px)";
-        section.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
-    });
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Executa uma vez no carregamento
 
-    window.addEventListener('scroll', revealSection);
-    revealSection(); // Ativa o que já estiver visível
-
-    // --- 3. Scroll Suave ---
+    // 3. SCROLL SUAVE
     const navLinks = document.querySelectorAll('.nav-menu a, .hero-cta a[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
+            
             if (targetElement) {
                 const headerHeight = document.querySelector('.main-header').offsetHeight;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                const offsetPosition = targetElement.offsetTop - headerHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
             }
         });
     });
