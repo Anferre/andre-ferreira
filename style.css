@@ -80,7 +80,7 @@ html { scroll-behavior: smooth; }
 .contact-link:hover { color: #ff9900; }
 .main-footer { padding: 50px; text-align: center; background: var(--primary-color); color: #fff; }
 
-/* --- HERO & ANIMAÇÕES (Sua parte nova) --- */
+/* --- HERO & ANIMAÇÕES DE FUNDO --- */
 .hero-section { 
     min-height: 100vh; 
     display: flex; 
@@ -96,13 +96,13 @@ html { scroll-behavior: smooth; }
 .hero-subtitle { color: var(--accent-color); margin: 10px 0; font-size: 1.2rem; }
 .hero-quote { max-width: 600px; font-style: italic; opacity: 0.8; margin: 0 auto 2rem auto; }
 
-/* O "Objeto" de brilho que se move ao fundo */
+/* O "Objeto" de brilho suave que se move ao fundo (Glow) */
 .hero-section::before {
     content: '';
     position: absolute;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(100, 255, 218, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.10) 0%, transparent 70%);
     border-radius: 50%;
     z-index: 0;
     pointer-events: none;
@@ -114,9 +114,51 @@ html { scroll-behavior: smooth; }
     100% { transform: translate(30%, 30%); }
 }
 
-.hero-content { position: relative; z-index: 1; }
+/* Garante que o texto fique acima de todas as animações */
+.hero-content { position: relative; z-index: 2; }
 
-/* Cursor piscando da digitação */
+/* --- OBJETOS VOANDO (PARTÍCULAS) --- */
+.floating-objects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    z-index: 0; /* Fica no fundo */
+}
+
+.floating-objects li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(100, 255, 218, 0.15); /* Cor de destaque com transparência */
+    animation: floatUp 25s linear infinite;
+    bottom: -150px;
+}
+
+/* Tamanhos, posições e velocidades diferentes para cada partícula */
+.floating-objects li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+.floating-objects li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+.floating-objects li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+.floating-objects li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+.floating-objects li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+.floating-objects li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+.floating-objects li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+.floating-objects li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+.floating-objects li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+.floating-objects li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+    100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+}
+
+/* --- CURSOR PISCANDO DA DIGITAÇÃO --- */
 #typing-text::after {
     content: '|';
     margin-left: 5px;
@@ -140,7 +182,6 @@ html { scroll-behavior: smooth; }
 }
 .content-section:nth-of-type(odd) { background-color: var(--white); }
 
-/* Classe que o JavaScript vai aplicar ao rolar */
 .content-section.appear {
     opacity: 1;
     transform: translateY(0);
