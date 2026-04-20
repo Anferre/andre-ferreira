@@ -1,4 +1,86 @@
-/* --- HERO & ANIMAÇÕES --- */
+:root {
+    --primary-color: #0A192F;
+    --secondary-color: #F5F5F5;
+    --text-color-primary: #E0E0E0;
+    --text-color-secondary: #333333;
+    --accent-color: #64FFDA;
+    --white: #FFFFFF;
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-primary); background-color: var(--primary-color); color: var(--text-color-primary); line-height: 1.6; }
+html { scroll-behavior: smooth; }
+
+/* Header */
+.main-header {
+    background-color: rgba(10, 25, 47, 0.95);
+    height: 70px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-logo { color: var(--white); font-weight: bold; text-decoration: none; font-size: 1.2rem; }
+.nav-menu { display: flex; list-style: none; gap: 20px; }
+.nav-menu a { color: var(--white); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+.nav-menu a:hover { color: var(--accent-color); }
+
+/* Grid de Certificações */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.certification-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    min-height: 110px;
+}
+
+.certification-card:hover { transform: translateY(-5px); }
+.cert-icon { font-size: 2.2rem; }
+.cert-info h3 { font-size: 1rem; color: var(--primary-color); margin-bottom: 4px; line-height: 1.2; }
+.cert-info p { font-size: 0.85rem; color: #666; font-weight: 500; }
+
+/* Cores das Bordas */
+.lse-border { border-left: 6px solid #333333; }
+.finops-border { border-left: 6px solid #00df9a; }
+.aws-border { border-left: 6px solid #ff9900; }
+.oci-border { border-left: 6px solid #f80000; }
+.terra-border { border-left: 6px solid #844ecd; }
+.google-border { border-left: 6px solid #4285f4; }
+
+/* Habilidades & Grids Gerais */
+.skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 800px; margin: 0 auto; }
+.skill-tag { background: var(--primary-color); color: #fff; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; }
+.experience-grid, .projects-grid { max-width: 900px; margin: 0 auto; display: grid; gap: 20px; }
+.experience-card, .project-card { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left; }
+.section-title { text-align: center; margin-bottom: 40px; font-size: 2.2rem; color: var(--primary-color); }
+
+/* Botões & Contato */
+.cta-button { padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 10px; display: inline-block; transition: 0.3s; }
+.cta-button.primary { background: var(--accent-color); color: var(--primary-color); }
+.cta-button.secondary { border: 1px solid var(--accent-color); color: var(--accent-color); }
+.contact-link { text-decoration: none; color: var(--primary-color); font-weight: 600; font-size: 1.1rem; transition: 0.3s; }
+.contact-link:hover { color: #ff9900; }
+.main-footer { padding: 50px; text-align: center; background: var(--primary-color); color: #fff; }
+
+/* --- HERO & ANIMAÇÕES (Sua parte nova) --- */
 .hero-section { 
     min-height: 100vh; 
     display: flex; 
@@ -9,6 +91,10 @@
     position: relative;
     overflow: hidden;
 }
+
+.hero-title { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--white); }
+.hero-subtitle { color: var(--accent-color); margin: 10px 0; font-size: 1.2rem; }
+.hero-quote { max-width: 600px; font-style: italic; opacity: 0.8; margin: 0 auto 2rem auto; }
 
 /* O "Objeto" de brilho que se move ao fundo */
 .hero-section::before {
@@ -45,10 +131,14 @@
 
 /* --- REVELAÇÃO DE SEÇÕES (FADE-IN) --- */
 .content-section {
+    padding: 80px 20px; 
+    background-color: var(--secondary-color); 
+    color: var(--text-color-secondary);
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
+.content-section:nth-of-type(odd) { background-color: var(--white); }
 
 /* Classe que o JavaScript vai aplicar ao rolar */
 .content-section.appear {
