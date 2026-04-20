@@ -94,3 +94,47 @@ html { scroll-behavior: smooth; }
 .contact-link:hover { color: #ff9900; }
 
 .main-footer { padding: 50px; text-align: center; background: var(--primary-color); color: #fff; }
+
+/* Animação de fundo (Glow) */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--accent-color);
+    filter: blur(150px);
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: -1;
+    animation: moveGlow 10s infinite alternate;
+}
+
+@keyframes moveGlow {
+    from { top: 10%; left: 10%; }
+    to { top: 60%; left: 80%; }
+}
+
+/* Cursor piscando para o efeito de digitação */
+#typing-text::after {
+    content: '|';
+    margin-left: 5px;
+    color: var(--accent-color);
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Garante que as seções comecem prontas para o Fade-in do JS */
+.content-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
