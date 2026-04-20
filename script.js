@@ -1,11 +1,48 @@
-/**
- * @file script.js
- * @description Funcionalidades JavaScript consolidadas: Scroll, Reveal e Typing.
- */
+// Este alerta serve para confirmar se o cache foi limpo
+alert("🚀 JS Carregado com sucesso na branch Dev!");
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. SCROLL SUAVE ---
+    // --- 1. Efeito de Digitação ---
+    const typingElement = document.getElementById("typing-text");
+    if (typingElement) {
+        const text = "Cloud & DevOps Engineer | AWS | Terraform | FinOps";
+        let i = 0;
+        typingElement.innerHTML = ""; 
+
+        function typeWriter() {
+            if (i < text.length) {
+                typingElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        typeWriter();
+    }
+
+    // --- 2. Revelar Seções ao Rolar ---
+    const sections = document.querySelectorAll('.content-section');
+    const revealSection = () => {
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop < window.innerHeight - 100) {
+                section.style.opacity = "1";
+                section.style.transform = "translateY(0)";
+            }
+        });
+    };
+
+    // Configuração inicial invisível
+    sections.forEach(section => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
+    });
+
+    window.addEventListener('scroll', revealSection);
+    revealSection(); // Ativa o que já estiver visível
+
+    // --- 3. Scroll Suave ---
     const navLinks = document.querySelectorAll('.nav-menu a, .hero-cta a[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -20,46 +57,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // --- 2. EFEITO DE REVELAÇÃO (Fade-in) ---
-    const sections = document.querySelectorAll('.content-section');
-    const revealSection = () => {
-        const windowHeight = window.innerHeight;
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            if (sectionTop < windowHeight - 100) {
-                section.style.opacity = "1";
-                section.style.transform = "translateY(0)";
-            }
-        });
-    };
-    
-    // Configuração inicial das seções
-    sections.forEach(section => {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(20px)";
-        section.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
-    });
-
-    window.addEventListener('scroll', revealSection);
-    revealSection(); // Ativa as que já estão na tela
-
-    // --- 3. EFEITO DE DIGITAÇÃO ---
-    const text = "Cloud & DevOps Engineer | AWS | Terraform | FinOps";
-    const speed = 100; 
-    let i = 0;
-    const typingElement = document.getElementById("typing-text");
-
-    if (typingElement) {
-        typingElement.innerHTML = ""; // Limpa o texto inicial
-        
-        function typeWriter() {
-            if (i < text.length) {
-                typingElement.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-        typeWriter();
-    }
 });
