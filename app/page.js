@@ -24,26 +24,32 @@ const experiencias = [
     cargo: "Cloud / DevOps Engineer",
     tag: "Atual",
     texto:
-      "Unir a solidez da infraestrutura tradicional à agilidade das arquiteturas nativas de nuvem, com foco em automação e confiabilidade.",
+      "Em transição para Cloud Computing, DevOps e Engenharia de Plataforma, com projetos práticos em AWS, Terraform, Kubernetes, Docker, observabilidade e automação de infraestrutura.",
   },
   {
-    cargo: "Operações de NOC",
-    tag: "Mais de uma década",
+    cargo: "Telecomunicações",
+    tag: "Quase 20 anos",
     texto:
-      "Atuação em centros de operações de rede e infraestrutura crítica nas Forças Armadas e no setor de Telecom. Aprendizado prático sobre resiliência e resposta a incidentes.",
+      "Atuação com transmissão de dados e infraestrutura tecnológica, consolidando a base em operações de rede e sistemas críticos.",
+  },
+  {
+    cargo: "Forças Armadas (NOC)",
+    tag: "Cerca de uma década",
+    texto:
+      "Operações de centro de controle de rede em infraestrutura crítica. Aprendizado prático sobre resiliência e resposta a incidentes.",
   },
 ];
 
 const formacao = [
   {
-    curso: "Ciência da Computação",
+    curso: "Tecnologia em Sistemas de Computação",
     instituicao: "Universidade Federal Fluminense (UFF)",
     status: "Cursando",
   },
   {
     curso: "MBA",
     instituicao: "London School of Economics (LSE)",
-    status: "Cursando",
+    status: "Concluído",
   },
 ];
 
@@ -140,14 +146,14 @@ export default function Home() {
           </Reveal>
           <Reveal delay={150} className="space-y-5 text-neutral-400 leading-relaxed">
             <p>
-              Sou um engenheiro forjado na linha de frente das operações críticas. Com mais de uma
-              década de atuação em NOC, nas Forças Armadas e em Telecom, aprendi na prática o peso
-              real da palavra resiliência.
+              Sou um engenheiro forjado na linha de frente das operações críticas. Por cerca de uma
+              década atuei em NOC nas Forças Armadas e, ao longo de quase 20 anos em
+              Telecomunicações, aprendi na prática o peso real da palavra resiliência.
             </p>
             <p>
-              Hoje atuo como Cloud/DevOps Engineer e curso Ciência da Computação na UFF e um MBA na
-              LSE. Minha missão é unir a solidez da infraestrutura tradicional à agilidade das
-              arquiteturas nativas de nuvem.
+              Hoje estou em transição para Cloud/DevOps Engineering, curso Tecnologia em Sistemas de
+              Computação na UFF e concluí um MBA na London School of Economics (LSE). Minha missão é
+              unir a solidez da infraestrutura tradicional à agilidade das arquiteturas nativas de nuvem.
             </p>
           </Reveal>
         </div>
